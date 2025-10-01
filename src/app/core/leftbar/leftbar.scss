@@ -1,0 +1,28 @@
+.example-container {
+  height: 100vh;
+  position: relative;
+  background-color: skyblue;
+}
+
+.example-sidenav {
+  width: 240px;
+}
+
+.main-content {
+  padding: 16px;
+  position: relative;
+}
+
+.menu-button {
+//   position: fixed;
+//   top: 16px;
+//   left: 16px;
+  z-index: 1000; /* ensures button appears above everything */
+}
+.header{
+    display: flex; 
+    align-items:center;
+    justify-content: space-between;
+    padding-right: 25px;
+    border-bottom: 2px solid black;
+}

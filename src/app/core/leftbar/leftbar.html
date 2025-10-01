@@ -1,0 +1,54 @@
+<!-- <div class="leftbar">
+    <ul>
+        @for(items of navItems; track items){
+        <li class="navItems" routerLink="{{items.route}}" routerLinkActive="active" matTooltip="{{items.tooltip | titlecase}}"
+            matTooltipPosition="right" role="button">
+            <mat-icon>{{items.icon}}</mat-icon>
+        </li>
+        }
+    </ul>
+</div> -->
+
+<mat-drawer-container class="example-container" autosize>
+
+    <!-- Side drawer -->
+    <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+        <mat-nav-list>
+            <mat-list-item>
+                <button mat-button>
+                    <mat-icon>dashboard</mat-icon>
+                    Item 1
+                </button>
+            </mat-list-item>
+
+            <mat-list-item>
+                <button mat-button>
+                    <mat-icon>admin_panel_settings</mat-icon>
+                    Item 2
+                </button>
+            </mat-list-item>
+
+            <mat-list-item>
+                <button mat-button>
+                    <mat-icon>group</mat-icon>
+                    Item 3
+                </button>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-drawer>
+
+    <div class="main-content">
+        <div class="header">
+            <button mat-mini-fab (click)="drawer.toggle()" class="menu-button">
+                <mat-icon>sort</mat-icon>
+            </button>
+            <button mat-mini-fab>
+                <span class="material-symbols-outlined">
+                    account_circle
+                </span>
+            </button>
+        </div>
+        <p>Main content goes here.</p>
+    </div>
+
+</mat-drawer-container>

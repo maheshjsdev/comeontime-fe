@@ -1,0 +1,41 @@
+.example-container {
+  height: 100vh;
+  position: relative;
+  background-color:oklch(66.7% 0.295 322.15);
+}
+
+.example-sidenav {
+  width: 240px;
+}
+
+.main-content {
+  padding: 16px;
+  position: relative;
+}
+
+.menu-button {
+  //   position: fixed;
+  //   top: 16px;
+  //   left: 16px;
+  z-index: 1000;
+  /* ensures button appears above everything */
+}
+.centerDiv{
+  padding: 20px 10px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 8px 10px;
+  border-bottom: 1px solid oklch(44.4% 0.011 73.639);
+}
+
+.logo {
+  width: 100%;
+  height: 55px;
+  font-size: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
