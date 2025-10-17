@@ -35,6 +35,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTreeModule } from '@angular/material/tree';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const materialModules = [
   MatButtonModule,
@@ -69,7 +70,9 @@ const materialModules = [
   MatAutocompleteModule,
   MatDividerModule,
   MatGridListModule,
-  MatTreeModule
+  MatTreeModule,
+  FormsModule,
+  ReactiveFormsModule
 ];
 
 @NgModule({

@@ -5,7 +5,7 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-leftbar',
-  imports: [MaterialModule, TitleCasePipe, RouterLink, RouterLinkActive, RouterModule],
+  imports: [MaterialModule],
   templateUrl: './leftbar.html',
   styleUrl: './leftbar.scss'
 })

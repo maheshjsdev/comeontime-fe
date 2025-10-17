@@ -1,41 +1,77 @@
-<mat-card>
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-</mat-form-field>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg w-7xl">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 light:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Sr No
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Admin
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Mobile No
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Registration No
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Created At
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Update At
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (user of userList(); track user._id){
+            <tr class="bg-white border-b light:bg-gray-800 light:border-gray-700 border-gray-200">
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <td class="px-6 py-4">
+                    {{1}}
+                </td>
+                <td class="px-6 py-4">
+                    {{user.companyName}}
+                </td>
+                <td class="px-6 py-4">
+                    {{user.userId}}
+                </td>
+                <td class="px-6 py-4">
+                    {{user.registrationNumber}}
+                </td>
+                <td class="px-6 py-4">
+                    {{user.mobile}}
+                </td>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container>
+                <td class="px-6 py-4">
+                    {{user.email}}
+                </td>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
+                <td class="px-6 py-4">
+                    {{user.createdAt | date:'short'}}
+                </td>
+                <td class="px-6 py-4">
+                    {{user.updatedAt | date:'short'}}
+                </td>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Weight </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-  </ng-container>
+                <td class="px-6 py-4">
+                    <a href="#" class="font-medium text-blue-600 light:text-blue-500 hover:underline">Edit</a>
+                </td>
+            </tr>
+            }
+            @empty {
+            Optional: Content to display when the collection is empty
+            }
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-  <!-- Row shown when there is no matching data. -->
-  <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-  </tr>
-</table>
-</mat-card>
+        </tbody>
+    </table>
+</div>

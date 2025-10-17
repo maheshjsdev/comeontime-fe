@@ -8,7 +8,7 @@ export const routes: Routes = [
             .then(m => m.Login)
     },
     {
-        path: 'deshboard',
+        path: 'dashboard',
         loadComponent: () => import('./components/deshboard/deshboard')
             .then(m => m.Deshboard)
     },
