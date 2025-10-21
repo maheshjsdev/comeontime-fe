@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
-import { Leftbar } from './core/leftbar/leftbar';
+import { Component, computed, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { MaterialModule } from './shared/material-module';
 import { CommonModule } from '@angular/common';
 import { Header } from './core/header/header';
+import { Shared } from './shared/shared';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +11,12 @@ import { Header } from './core/header/header';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App implements OnInit {
-
+export class App {
   showFiller = false;
-  isAuth: any = true;
+  sharedServ = inject(Shared);
   protected title = 'comeontime-fe';
- ngOnInit() {
-  const value = sessionStorage.getItem('isAuthenticated');
-  console.log(value)
-  // this.isAuth = value === '1'; 
-  console.log(typeof this.isAuth, this.isAuth);
-}
+  isAuth = computed(() =>
+    this.sharedServ.isAuthenticated() || this.sharedServ.isAuthAccess()
+  );
 
 }

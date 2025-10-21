@@ -64,8 +64,10 @@ export class Login {
         if (res?.token) {
           if (res.status === true) {
             localStorage.setItem('token', res.token);
-            sessionStorage.setItem('isAuthenticated', '1');
+            localStorage.setItem('role', res?.roleId || '');
+            localStorage.setItem('user', dataObj.userId || '');
             this.sharedServ.show('Successfully logged in', true)
+            this.sharedServ.setAuth(true);
             this.router.navigateByUrl('/dashboard')
           }
 

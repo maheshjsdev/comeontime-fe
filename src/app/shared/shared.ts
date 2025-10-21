@@ -1,15 +1,16 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { SnackbarComponent } from './snackbar.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Shared {
-   private _snackBar = inject(MatSnackBar);
+  public _snackBar = inject(MatSnackBar);
 
-  private horizontalPosition: MatSnackBarHorizontalPosition = 'end';
-  private verticalPosition: MatSnackBarVerticalPosition = 'top';
+  public horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  public verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   show(message: string, state: boolean = true) {
     const icon = state ? 'check_circle' : 'error';
@@ -22,5 +23,17 @@ export class Shared {
       panelClass: ['custom-snackbar'],
       duration: 3000
     });
+  }
+  isAuthenticated = signal(false);
+  isAuthAccess = signal(localStorage.getItem('isAuthAccess') === '1');
+  setAuth(isAuth: boolean) {
+    this.isAuthenticated.set(isAuth);
+    this.isAuthAccess.set(isAuth);
+
+    if (isAuth) {
+      localStorage.setItem('isAuthAccess', '1');
+    } else {
+      localStorage.removeItem('isAuthAccess');
+    }
   }
 }
