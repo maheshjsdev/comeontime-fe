@@ -13,22 +13,22 @@
                     <div>
                         <mat-form-field appearance="fill" class="w-full">
                             <mat-label>User ID</mat-label>
-                            <input matInput placeholder="Enter User ID" maxlength="20" formControlName="userId"
-                                (input)="loginForm.controls['userId'].setValue(loginForm.controls['userId'].value?.toUpperCase())">
-                            <mat-icon matSuffix>{{ validationService.getIcon(loginForm, 'userId') }}</mat-icon>
-                            @if (userId?.hasError('required') && (userId?.touched || userId?.dirty)) {
+                            <input matInput placeholder="Enter User ID" maxlength="20" formControlName="email"
+                                (input)="loginForm.controls['email'].setValue(loginForm.controls['email'].value?.toUpperCase())">
+                            <mat-icon matSuffix>{{ validationService.getIcon(loginForm, 'email') }}</mat-icon>
+                            @if (email?.hasError('required') && (email?.touched || email?.dirty)) {
                             <mat-error>This field is required</mat-error>
                             }
 
-                            @if (userId?.hasError('minlength') && (userId?.touched || userId?.dirty)) {
+                            @if (email?.hasError('minlength') && (email?.touched || email?.dirty)) {
                             <mat-error>Minimum 6 characters</mat-error>
                             }
 
-                            @if (userId?.hasError('maxlength') && (userId?.touched || userId?.dirty)) {
+                            @if (email?.hasError('maxlength') && (email?.touched || email?.dirty)) {
                             <mat-error>Maximum 20 characters</mat-error>
                             }
 
-                            @if (userId?.hasError('pattern') && (userId?.touched || userId?.dirty)) {
+                            @if (email?.hasError('pattern') && (email?.touched || email?.dirty)) {
                             <mat-error>Only uppercase letters and numbers, no spaces</mat-error>
                             }
 
@@ -87,12 +87,12 @@
             <form class="mt-8 space-y-6" [formGroup]="loginForm">
                 <!-- User ID -->
                 <div>
-                    <label class="text-gray-300 text-sm font-medium mb-2 block">User ID <span class="text-red-500">*</span></label>
+                    <label class="text-gray-300 text-sm font-medium mb-2 block">User ID <span
+                            class="text-red-500">*</span></label>
                     <div class="relative flex items-center">
-                        <input name="username" type="text" required
+                        <input name="username" type="email" required
                             class="w-full text-white text-sm border border-gray-600 bg-gray-700 px-4 py-3 pr-8 rounded-md outline-indigo-500 placeholder:text-gray-400"
-                            placeholder="Enter user id" maxlength="20" formControlName="userId"
-                            (input)="loginForm.controls['userId'].setValue(loginForm.controls['userId'].value?.toUpperCase())">
+                            placeholder="Enter user id" maxlength="20" formControlName="email">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="#888" stroke="#888"
                             class="w-4 h-4 absolute right-4" viewBox="0 0 24 24">
                             <circle cx="10" cy="7" r="6"></circle>
@@ -101,18 +101,19 @@
                             </path>
                         </svg>
                     </div>
-                    <div *ngIf="userId?.touched || userId?.dirty" class="mt-1 text-xs text-red-500 space-y-1">
-                        <div *ngIf="userId?.hasError('required')">User ID is required.</div>
-                        <div *ngIf="userId?.hasError('minlength')">Minimum 6 characters required.</div>
-                        <div *ngIf="userId?.hasError('maxlength')">Maximum 20 characters allowed.</div>
-                        <div *ngIf="userId?.hasError('pattern')">Only uppercase letters and numbers allowed.</div>
+                    <div *ngIf="email?.touched || email?.dirty" class="mt-1 text-xs text-red-500 space-y-1">
+                        <div *ngIf="email?.hasError('required')">Email is required.</div>
+                        <div *ngIf="email?.hasError('minlength')">Minimum 6 characters required.</div>
+                        <div *ngIf="email?.hasError('maxlength')">Maximum 20 characters allowed.</div>
+                        <!-- <div *ngIf="email?.hasError('pattern')">Only uppercase letters and numbers allowed.</div> -->
                     </div>
 
                 </div>
 
                 <!-- Password -->
                 <div>
-                    <label class="text-gray-300 text-sm font-medium mb-2 block">Password <span class="text-red-500">*</span></label>
+                    <label class="text-gray-300 text-sm font-medium mb-2 block">Password <span
+                            class="text-red-500">*</span></label>
                     <div class="relative flex items-center">
                         <input name="password" [type]="hide ? 'password' : 'text'" required
                             class="w-full text-white text-sm border border-gray-600 bg-gray-700 px-4 py-3 pr-10 rounded-md outline-indigo-500 placeholder:text-gray-400"

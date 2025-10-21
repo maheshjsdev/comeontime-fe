@@ -14,7 +14,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class AdminManagement {
   addUpdateForm: FormGroup;
   userList = signal<any[]>([]);
-  refreshTrigger = signal(0);
   isModalOpen = signal(false);
   isDeleteModal = signal(false);
   formHeading: string = 'Add Admin';
@@ -51,7 +50,7 @@ export class AdminManagement {
       this.formHeading = 'Update Admin';
       this.formBtn = 'Update';
       const selectedUser = this.userList()?.find(user => user._id === id);
-      this.userId = selectedUser?.userId || '';
+      this.userId = selectedUser?._id || '';
       if (selectedUser) {
         this.addUpdateForm.patchValue(selectedUser)
       }
@@ -95,7 +94,7 @@ export class AdminManagement {
         });
       } else {
         const dataObj = this.addUpdateForm.value;
-        dataObj.userId = this.userId;
+        dataObj._id = this.userId;
         this.apiService.commonPost('/admin/update', dataObj).subscribe({
           next: (res) => {
             if (res.status === true) {
@@ -120,7 +119,7 @@ export class AdminManagement {
     }
   }
   deleteClicked() {
-    const dataObj = { userId: this.deleteId };
+    const dataObj = { _id: this.deleteId, superAdminId: '' };
     this.apiService.commonPost('/admin/delete', dataObj).subscribe({
       next: (res) => {
         if (res.status === true) {

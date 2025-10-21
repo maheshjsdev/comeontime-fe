@@ -22,20 +22,20 @@ export class Login {
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      userId: [
+      email: [
         '',
         [
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(19),
-          Validators.pattern('^[A-Z0-9]+$')
+          Validators.email
         ]
       ],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
-  get userId() {
-    return this.loginForm.get('userId');
+  get email() {
+    return this.loginForm.get('email');
   }
 
   get password() {
